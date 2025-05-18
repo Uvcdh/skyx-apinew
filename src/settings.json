@@ -125,6 +125,15 @@
           "params": {
             "id": "masukkan id ngepngep"
           }
+        },
+        {
+          "name": "Npm stalk",
+          "desc": "Npm package stalk",
+          "path": "/stalk/npm?name=",
+          "status": "ready",
+          "params": {
+            "id": "masukkan nama package npm"
+          }
         }, 
           {
       "name": "Mobile Legends ID Checker",
