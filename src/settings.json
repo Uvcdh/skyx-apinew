@@ -93,6 +93,15 @@
           "params": {
             "url": "masukkan link youtube"
           }
+        },
+        {
+          "name": "Capcut",
+          "desc": "Mendownload video capcut",
+          "path": "/download/capcut?url=",
+          "status": "ready",
+          "params": {
+            "url": "masukkan link capcut"
+          }
         }
       ]
     },
