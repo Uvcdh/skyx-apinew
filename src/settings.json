@@ -77,6 +77,15 @@
           }
         }, 
         {
+          "name": "Spotify",
+          "desc": "Untuk mendownload lagi di spotify",
+          "path": "/download/spotify?url=",
+          "status": "ready",
+          "params": {
+            "url": "masukkan link spotify"
+          }
+        }, 
+        {
           "name": "Ytmp3",
           "desc": "Untuk mendownload video youtube berupa audio",
           "path": "/download/ytmp3?url=",
