@@ -1,4 +1,3 @@
-};
 const fetch = require('node-fetch'); // Jika pakai Node.js v18+, bisa pakai global fetch tanpa require
 
 module.exports = function(app) {
