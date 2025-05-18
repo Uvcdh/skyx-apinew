@@ -1087,3 +1087,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Re-run on window resize
     window.addEventListener('resize', observeElements);
 });
+
+ fetch("/random/visitor?q=https://berak.vercel.app/")
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('visitorCount').innerText = data.visitor.total || 0;
+    })
+    .catch(err => {
+      console.error("Gagal mengambil data visitor:", err);
+    });

@@ -43,6 +43,15 @@
           "desc": "Blue Archive Random Images",
           "path": "/random/ba",
           "status": "ready"
+        }, 
+        {
+          "name": "Visitor",
+          "desc": "Menunjukkan total pengunjung di website",
+          "path": "/random/visitor?q=",
+          "status": "ready"
+          "params": {
+            "q": "Website query"
+          }
         }
       ]
     },
