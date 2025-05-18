@@ -12,38 +12,24 @@ async function mlstalk(id, zone) {
 
 module.exports = function (app) {
   app.get('/stalk/ml', async (req, res) => {
-    const { id, zone } = req.query;
-
+        const { id, zone } = req.query;
+    
     if (!id) {
-      return res.status(400).json({
-        status: false,
-        creator: 'ikann',
-        message: "Parameter 'id' (User ID) tidak ditemukan"
-      });
+      return res.status(400).json({ status: false, error: "Tolong masukkan id" });
     }
-
     if (!zone) {
-      return res.status(400).json({
-        status: false,
-        creator: 'ikann',
-        message: "Parameter 'zone' (Zone ID) tidak ditemukan"
-      });
+      return res.status(400).json({ status: false, error: "Tolong masukkan zoneid" });
     }
-
-    const response = await mlstalk(id, zone);
-
-    if (!response.status) {
-      return res.status(404).json({
-        status: false,
+    
+    try {
+      const response = await mlstalk(id, zone);
+      res.status(200).json({
+        status: true,
         creator: 'ikann',
-        message: response.message
+        data: response.result || response
       });
+    } catch (error) {
+      res.status(500).json({ status: false, error: error.message });
     }
-
-    res.status(200).json({
-      status: true,
-      creator: 'ikann',
-      data: response
     });
-  });
 };
