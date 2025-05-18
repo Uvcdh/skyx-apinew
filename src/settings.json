@@ -71,6 +71,15 @@
           "params": {
             "uuid": "masukkan id genshinnya"
           }
+        }, 
+        {
+          "name": "Fire Fire",
+          "desc": "Fire Fire stalk",
+          "path": "/stalk/epep?id=",
+          "status": "ready",
+          "params": {
+            "id": "masukkan id ngepngep"
+          }
         }
       ]
     },
