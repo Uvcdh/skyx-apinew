@@ -21,8 +21,8 @@ async function getMobileLegendsProfile(userId, zone) {
     return {
       status: true,
       result: {
-        userId,
-        zone,
+        userId,               // dimasukkan manual
+        zone,                 // dimasukkan manual
         nickname: data.username,
         level: data.level,
         rank: data.rank,
@@ -40,7 +40,7 @@ async function getMobileLegendsProfile(userId, zone) {
 }
 
 module.exports = function (app) {
-  app.get('/stalk/ml', async (req, res) => {
+  app.get('/tools/cekid-ml', async (req, res) => {
     const { id, zone } = req.query;
 
     if (!id) {
