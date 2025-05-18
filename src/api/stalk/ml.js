@@ -58,7 +58,7 @@ module.exports = function (app) {
     }
 
     const response = await getMobileLegendsProfile(id, zoneid);
-      return res.status(404).json({
+      return res.status(200).json({
         status: false,
         creator: 'ikann',
         message: response
