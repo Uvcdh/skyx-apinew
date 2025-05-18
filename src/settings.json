@@ -118,14 +118,14 @@
           }
         }, 
           {
-            "name": "Mobile Legend", 
-            "desc": "Ml stalking", 
-            "path": "/stalk/ml?id=&zoneid=",
-            "status": "ready",
-            "params": {
-            "id": "masukkan id emel", 
-            "zoneid": "masukkan zoneid emel"
-          }
+      "name": "Mobile Legends ID Checker",
+      "desc": "Cek nickname dari ID Mobile Legends",
+      "path": "/stalk/ml?id=&zone=",
+      "status": "ready",
+      "params": {
+        "id": "Masukkan ID akun Mobile Legends",
+        "zone": "Masukkan Zone ID akun Mobile Legends"
+      }
           }
       ]
     },
