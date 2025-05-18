@@ -68,12 +68,21 @@
           }
         }, 
         {
+          "name": "Ytmp4",
+          "desc": "Untuk mendownload video youtube berupa video",
+          "path": "/download/ytmp4?url=",
+          "status": "ready",
+          "params": {
+            "url": "masukkan link youtube"
+          }
+        }, 
+        {
           "name": "Ytmp3",
           "desc": "Untuk mendownload video youtube berupa audio",
           "path": "/download/ytmp3?url=",
           "status": "ready",
           "params": {
-            "url": "masukkan link tiktok"
+            "url": "masukkan link youtube"
           }
         }
       ]
