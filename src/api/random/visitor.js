@@ -20,10 +20,11 @@ async function visitor(urlToTrack) {
 
     app.get('/random/visitor', async (req, res) => {
         try {
-            const response = await visitor(q)
+            const response = await visitor()
       res.status(200).json({
         status: true,
         creator: 'ikann',
+        )};
         data: response.result || response
         } catch (error) {
             res.status(500).send(`Error: ${error.message}`);
