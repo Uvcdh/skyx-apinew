@@ -84,6 +84,49 @@
           }
         }
       ]
+    },
+    {
+      "name": "Visitor",
+      "items": [
+        {
+          "name": "Daftar visitor",
+          "desc": "membuat daftar di visitor",
+          "path": "/visitor/daftar?q=&key=",
+          "status": "ready",
+          "params": {
+            "q": "masukkan parameter q",
+            "key": "masukkan parameter key"
+          }
+        },
+        {
+          "name": "Menghapus Payment",
+          "desc": "menghapus daftar di visitor",
+          "path": "/visitor/hapus?q=&key=",
+          "status": "ready",
+          "params": {
+            "q": "masukkan parameter q",
+            "key": "masukkan parameter key"
+          }
+        },
+        {
+          "name": "View Payment",
+          "desc": "melihat orang yang berkunjung di website",
+          "path": "/visitor/hapus?q=",
+          "status": "ready",
+          "params": {
+            "q": "masukkan parameter q"
+          }
+        },
+        {
+          "name": "Menambah Payment",
+          "desc": "menambah orang yang berkunjung di website",
+          "path": "/visitor/tambah?q=",
+          "status": "ready",
+          "params": {
+            "q": "masukkan parameter q"
+          }
+        }
+      ]
     }
   ]
 }
