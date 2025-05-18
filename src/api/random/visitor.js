@@ -1,10 +1,9 @@
-const fetch = require('node-fetch'); // Jika pakai Node.js v18+, bisa pakai global fetch tanpa require
+const fetch = require('node-fetch');
 
 module.exports = function(app) {
-  // Fungsi visitor untuk ambil data dari API eksternal
   async function visitor(urlToTrack) {
     const apiUrl = `https://visitor.api.akuari.my.id/umum/view/tambah-ip?id=${encodeURIComponent(urlToTrack)}`;
-    
+
     try {
       const response = await fetch(apiUrl);
       if (!response.ok) {
@@ -19,7 +18,6 @@ module.exports = function(app) {
     }
   }
 
-  // Route Express: /random/visitor?q=someurl
   app.get('/random/visitor', async (req, res) => {
     const { q } = req.query;
 
