@@ -1,88 +1,44 @@
 const axios = require('axios');
-
-async function cekStatus(merchant, keyorkut) {
+module.exports = function(app) {
+  async function cekStatus(merchant, keyorkut) {
     const apiUrl = "https://linecloud.my.id/api/orkut/cekstatus";
     const apikey = "Line";
 
     try {
-        // Using axios with proper parameter handling and timeout
-        const response = await axios.get(apiUrl, {
-            params: {
-                apikey: apikey,
-                merchant: merchant,
-                keyorkut: keyorkut
-            },
-            timeout: 15000, // 15 seconds timeout
-            validateStatus: function (status) {
-                return status >= 200 && status < 500; // Accept 200-499 status codes
-            }
+        const response = await fetch(`${apiUrl}?apikey=${apikey}&merchant=${merchant}&keyorkut=${keyorkut}`, {
+            method: "GET",
         });
 
-        // Check if the response contains valid data
-        if (!response.data) {
-            throw new Error('Empty response from server');
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        return response.data;
+        const result = await response.json();
+        return result;
     } catch (error) {
-        console.error("Error checking status:", error);
-        
-        // Improved error message handling
-        const errorMessage = error.response?.data?.message || 
-                            error.message || 
-                            'Unknown error occurred';
-        
-        return { 
-            success: false, 
-            message: errorMessage,
-            statusCode: error.response?.status
-        };
+        console.error("Error creating payment:", error);
+        return { success: false, message: error.message };
     }
 }
 
-module.exports = function(app) {
-    app.get('/orkut/cekstatus', async (req, res) => {
-        const { merchant, keyorkut } = req.query;
+  app.get('/orkut/cekstatus', async (req, res) => {
+  const { merchant, keyorkut } = req.query;
+  if (!merchant) {
+    return res.status(400).json({ status: false, error: "Tolong masukkan merchant" });
+  }
+  if (!keyorkut) {
+    return res.status(400).json({ status: false, error: "Tolong masukkan keyorkut" });
+  }
 
-        // Enhanced input validation
-        if (!merchant || typeof merchant !== 'string' || merchant.trim() === '') {
-            return res.status(400).json({ 
-                status: false, 
-                error: "Parameter merchant harus diisi dengan nilai yang valid" 
-            });
-        }
-
-        if (!keyorkut || typeof keyorkut !== 'string' || keyorkut.trim() === '') {
-            return res.status(400).json({ 
-                status: false, 
-                error: "Parameter keyorkut harus diisi dengan nilai yang valid" 
-            });
-        }
-
-        try {
-            const response = await cekStatus(merchant, keyorkut);
-            
-            // Handle non-successful responses from the API
-            if (!response.success) {
-                return res.status(response.statusCode || 400).json({
-                    status: false,
-                    error: response.message || 'Gagal memeriksa status',
-                    data: response
-                });
-            }
-            
-            // Successful response
-            res.status(200).json({
-                status: true,
-                creator: 'ikann',
-                data: response // Return the complete response
-            });
-        } catch (error) {
-            console.error("Server error:", error);
-            res.status(500).json({ 
-                status: false, 
-                error: 'Terjadi kesalahan pada server' 
-            });
-        }
+  try {
+    const response = await cekStatus(merchant, keyorkut);    
+    res.status(200).json({
+      status: true,
+      creator: 'ikann',
+      data: response.result
     });
+  } catch (error) {
+    res.status(500).json({ status: false, error: error.message });
+  }
+});
 };
