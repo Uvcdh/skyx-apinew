@@ -13,21 +13,21 @@ async function getMobileLegendsProfile(userId, zoneId) {
     );
 
     const data = response.data;
-
+    
     if (!data || data.status === "error") {
       throw new Error(data.message || "Profil tidak ditemukan");
     }
 
     return {
       status: true,
-        userId,
-        zoneId,
-        nickname: data.username,
-        level: data.level,
-        rank: data.rank,
-        heroCount: data.hero,
-        skinCount: data.skin,
-        winRate: data.winrate
+      userId: userId,
+      zoneId: zoneId,
+      nickname: data.username,
+      level: data.level,
+      rank: data.rank,
+      heroCount: data.hero,
+      skinCount: data.skin,
+      winRate: data.winrate
     };
   } catch (error) {
     return {
@@ -37,37 +37,25 @@ async function getMobileLegendsProfile(userId, zoneId) {
   }
 }
 
-module.exports = function (app) {
+module.exports = function(app) {
   app.get('/stalk/ml', async (req, res) => {
     const { id, zoneid } = req.query;
-
+    
     if (!id) {
-      return res.status(400).json({
-        status: false,
-        creator: 'ikann',
-        message: "Parameter 'id' (User ID) tidak ditemukan"
+      return res.status(400).json({ 
+        status: false, 
+        message: "Parameter 'id' (User ID) tidak ditemukan" 
       });
     }
-
+    
     if (!zoneid) {
-      return res.status(400).json({
-        status: false,
-        creator: 'ikann',
-        message: "Parameter 'zoneid' (Zone ID) tidak ditemukan"
+      return res.status(400).json({ 
+        status: false, 
+        message: "Parameter 'zoneid' (Zone ID) tidak ditemukan" 
       });
     }
 
-    const response = await getMobileLegendsProfile(id, zoneid);
-      return res.status(200).json({
-        status: false,
-        creator: 'ikann',
-        message: response
-      });
-
-    res.status(200).json({
-      status: true,
-      creator: 'ikann',
-      data: response.result
-    });
+    const result = await getMobileLegendsProfile(id, zoneid);
+    res.status(result.status ? 200 : 404).json(result);
   });
 };
