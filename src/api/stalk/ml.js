@@ -19,8 +19,6 @@ async function getMobileLegendsProfile(userId, zone) {
     }
 
     return {
-      status: true,
-      result: {
         userId,               // dimasukkan manual
         zone,                 // dimasukkan manual
         nickname: data.username,
@@ -30,7 +28,6 @@ async function getMobileLegendsProfile(userId, zone) {
         skinCount: data.skin,
         winRate: data.winrate
       }
-    };
   } catch (error) {
     return {
       status: false,
