@@ -1,39 +1,13 @@
-const axios = require('axios');
+const axios = require('axios')
 
-async function getMobileLegendsProfile(userId, zone) {
-  try {
-    const response = await axios.get(
-      `https://api.vreden.my.id/api/mlstalk?id=${userId}&zoneid=${zone}`,
-      {
-        headers: {
-          "Accept": "application/json",
-          "User-Agent": "Mozilla/5.0"
-        }
-      }
-    );
-
-    const data = response.data;
-
-    if (!data || data.status === "error") {
-      throw new Error(data.message || "Profil tidak ditemukan");
+async function mlstalk(id, zone) {
+    try {
+        const response = await axios.get(`https://api.vreden.my.id/api/mlstalk?id=${encodeURIComponent(id)}&zoneid=${encodeURIComponent(zone)}`)
+            return response.data.result.data
+     } catch (error) {
+        console.error(error)
+        throw new Error('Error wak')
     }
-
-    return {
-        userId,               // dimasukkan manual
-        zone,                 // dimasukkan manual
-        nickname: data.username,
-        level: data.level,
-        rank: data.rank,
-        heroCount: data.hero,
-        skinCount: data.skin,
-        winRate: data.winrate
-      }
-  } catch (error) {
-    return {
-      status: false,
-      message: error.message || "Gagal mendapatkan data profil"
-    };
-  }
 }
 
 module.exports = function (app) {
@@ -56,7 +30,7 @@ module.exports = function (app) {
       });
     }
 
-    const response = await getMobileLegendsProfile(id, zone);
+    const response = await mlstalk(id, zone);
 
     if (!response.status) {
       return res.status(404).json({
