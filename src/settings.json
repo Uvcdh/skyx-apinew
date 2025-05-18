@@ -116,7 +116,16 @@
           "params": {
             "id": "masukkan id ngepngep"
           }
-        }
+        }, 
+          {
+            "name": "Mobile Legend", 
+            "desc": "Ml stalking", 
+            "path": "/stalk/ml?id=",
+            "status": "ready",
+            "params": {
+            "id": "masukkan id ngepngep"
+          }
+          }
       ]
     },
     {
