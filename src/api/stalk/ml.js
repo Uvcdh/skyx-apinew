@@ -56,6 +56,6 @@ module.exports = function(app) {
     }
 
     const result = await getMobileLegendsProfile(id, zoneid);
-    res.status(result.status ? 200 : 404).json(result);
+    res.status(result ? 200 : 404).json(result);
   });
 };
