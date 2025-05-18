@@ -20,7 +20,6 @@ async function getMobileLegendsProfile(userId, zoneId) {
 
     return {
       status: true,
-      result: {
         userId,
         zoneId,
         nickname: data.username,
@@ -29,7 +28,6 @@ async function getMobileLegendsProfile(userId, zoneId) {
         heroCount: data.hero,
         skinCount: data.skin,
         winRate: data.winrate
-      }
     };
   } catch (error) {
     return {
@@ -65,7 +63,7 @@ module.exports = function (app) {
       return res.status(404).json({
         status: false,
         creator: 'ikann',
-        message: response.message
+        message: response
       });
     }
 
