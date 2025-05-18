@@ -24,8 +24,8 @@ async function visitor(urlToTrack) {
       res.status(200).json({
         status: true,
         creator: 'ikann',
-        )};
         data: response.result || response
+        )};
         } catch (error) {
             res.status(500).send(`Error: ${error.message}`);
         }
