@@ -19,13 +19,17 @@ async function visitor(urlToTrack) {
 }
 
     app.get('/random/visitor', async (req, res) => {
+      const { q } = req.query;
+        if (!q) {
+            return res.status(400).json({ status: false, error: 'Query is required' });
+        }
         try {
-            const response = await visitor()
+            const response = await visitor(q);
       res.status(200).json({
         status: true,
         creator: 'ikann',
         data: response.result || response
-        )};
+      });
         } catch (error) {
             res.status(500).send(`Error: ${error.message}`);
         }
