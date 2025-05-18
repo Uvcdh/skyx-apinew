@@ -66,6 +66,15 @@
           "params": {
             "url": "masukkan link tiktok"
           }
+        }, 
+        {
+          "name": "Ytmp3",
+          "desc": "Untuk mendownload video youtube berupa audio",
+          "path": "/download/ytmp3?url=",
+          "status": "ready",
+          "params": {
+            "url": "masukkan link tiktok"
+          }
         }
       ]
     },
