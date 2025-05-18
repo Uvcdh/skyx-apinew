@@ -120,10 +120,11 @@
           {
             "name": "Mobile Legend", 
             "desc": "Ml stalking", 
-            "path": "/stalk/ml?id=",
+            "path": "/stalk/ml?id=&zoneid=",
             "status": "ready",
             "params": {
-            "id": "masukkan id ngepngep"
+            "id": "masukkan id emel", 
+            "zoneid": "masukkan zoneid emel"
           }
           }
       ]
