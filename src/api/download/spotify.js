@@ -63,7 +63,7 @@ module.exports = function(app) {
     const { url } = req.query;
 
     if (!url) {
-        return res.status(400).json({
+        res.status(400).json({
             status: false,
             creator: 'ikann',
             message: 'Invalid or missing Spotify URL'
