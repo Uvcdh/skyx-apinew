@@ -66,11 +66,11 @@
         {
           "name": "Create Payment",
           "desc": "membuat payment order kouta",
-          "path": "/orkur/create?amount=&codeqr=",
+          "path": "/orkut/create?amount=&codeqr=",
           "status": "ready",
           "params": {
             "amount": "Search query", 
-            "codeqr": " rawr"
+            "codeqr": "rawr"
           }
         }
       ]
