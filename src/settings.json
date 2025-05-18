@@ -69,8 +69,8 @@
           "path": "/orkut/create?amount=&codeqr=",
           "status": "ready",
           "params": {
-            "amount": "Search query", 
-            "codeqr": "rawr"
+            "amount": "Tolong masukkan harganya", 
+            "codeqr": "Tolong masukkan codeqr"
           }
         }
       ]
