@@ -1,9 +1,9 @@
 const axios = require('axios');
 
-async function getMobileLegendsProfile(userId, zoneId) {
+async function getMobileLegendsProfile(userId, zone) {
   try {
     const response = await axios.get(
-      `https://api.vreden.my.id/api/mlstalk?id=${userId}&zoneid=${zoneId}`,
+      `https://api.vreden.my.id/api/mlstalk?id=${userId}&zoneid=${zone}`,
       {
         headers: {
           "Accept": "application/json",
@@ -13,21 +13,23 @@ async function getMobileLegendsProfile(userId, zoneId) {
     );
 
     const data = response.data;
-    
+
     if (!data || data.status === "error") {
       throw new Error(data.message || "Profil tidak ditemukan");
     }
 
     return {
       status: true,
-      userId: userId,
-      zoneId: zoneId,
-      nickname: data.username,
-      level: data.level,
-      rank: data.rank,
-      heroCount: data.hero,
-      skinCount: data.skin,
-      winRate: data.winrate
+      result: {
+        userId,
+        zone,
+        nickname: data.username,
+        level: data.level,
+        rank: data.rank,
+        heroCount: data.hero,
+        skinCount: data.skin,
+        winRate: data.winrate
+      }
     };
   } catch (error) {
     return {
@@ -37,25 +39,40 @@ async function getMobileLegendsProfile(userId, zoneId) {
   }
 }
 
-module.exports = function(app) {
+module.exports = function (app) {
   app.get('/stalk/ml', async (req, res) => {
     const { id, zone } = req.query;
-    
+
     if (!id) {
-      return res.status(400).json({ 
-        status: false, 
-        message: "Parameter 'id' (User ID) tidak ditemukan" 
-      });
-    }
-    
-    if (!zone) {
-      return res.status(400).json({ 
-        status: false, 
-        message: "Parameter 'zoneid' (Zone ID) tidak ditemukan" 
+      return res.status(400).json({
+        status: false,
+        creator: 'ikann',
+        message: "Parameter 'id' (User ID) tidak ditemukan"
       });
     }
 
-    const result = await getMobileLegendsProfile(id, zone);
-    res.status(result ? 200 : 404).json(result);
+    if (!zone) {
+      return res.status(400).json({
+        status: false,
+        creator: 'ikann',
+        message: "Parameter 'zone' (Zone ID) tidak ditemukan"
+      });
+    }
+
+    const response = await getMobileLegendsProfile(id, zone);
+
+    if (!response.status) {
+      return res.status(404).json({
+        status: false,
+        creator: 'ikann',
+        message: response.message
+      });
+    }
+
+    res.status(200).json({
+      status: true,
+      creator: 'ikann',
+      data: response.result
+    });
   });
 };
