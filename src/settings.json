@@ -23,6 +23,15 @@
             "text": "Text for luminai to respond to"
           }
         },
+        {
+          "name": "Vioo Ai",
+          "desc": "Talk with vioo",
+          "path": "/ai/viooai?text=",
+          "status": "ready",
+          "params": {
+            "text": "Text for vioo to respond to"
+          }
+       },
        {
           "name": "HydroMind",
           "desc": "See the list of supported AI models here: https://mind.hydrooo.web.id",
