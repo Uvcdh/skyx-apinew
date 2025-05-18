@@ -39,7 +39,7 @@ async function getMobileLegendsProfile(userId, zoneId) {
 
 module.exports = function(app) {
   app.get('/stalk/ml', async (req, res) => {
-    const { id, zoneid } = req.query;
+    const { id, zone } = req.query;
     
     if (!id) {
       return res.status(400).json({ 
@@ -48,14 +48,14 @@ module.exports = function(app) {
       });
     }
     
-    if (!zoneid) {
+    if (!zone) {
       return res.status(400).json({ 
         status: false, 
         message: "Parameter 'zoneid' (Zone ID) tidak ditemukan" 
       });
     }
 
-    const result = await getMobileLegendsProfile(id, zoneid);
+    const result = await getMobileLegendsProfile(id, zone);
     res.status(result.status ? 200 : 404).json(result);
   });
 };
