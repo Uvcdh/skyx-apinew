@@ -40,7 +40,7 @@ async function getMobileLegendsProfile(userId, zone) {
 }
 
 module.exports = function (app) {
-  app.get('/tools/cekid-ml', async (req, res) => {
+  app.get('/stalk/ml', async (req, res) => {
     const { id, zone } = req.query;
 
     if (!id) {
