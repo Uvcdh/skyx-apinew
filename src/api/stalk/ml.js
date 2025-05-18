@@ -72,7 +72,7 @@ module.exports = function (app) {
     res.status(200).json({
       status: true,
       creator: 'ikann',
-      data: response.result
+      data: response
     });
   });
 };
