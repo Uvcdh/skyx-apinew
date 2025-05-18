@@ -32,7 +32,7 @@ module.exports = function(app) {
     }
 
     try {
-      const response = await viooai(q);
+      const response = await viooai(text);
       res.status(200).json({
         status: true,
         creator: 'ikann',
