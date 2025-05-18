@@ -48,7 +48,7 @@
           "name": "Visitor",
           "desc": "Menunjukkan total pengunjung di website",
           "path": "/random/visitor?q=",
-          "status": "ready"
+          "status": "ready",
           "params": {
             "q": "Website query"
           }
