@@ -1,61 +1,56 @@
 const axios = require('axios');
 
-async function getMobileLegendsProfile(userId, zoneId) {
+const getMobileLegendsProfile = async (userId, zoneId) => {
   try {
-    const response = await axios.get(
-      `https://api.vreden.my.id/api/mlstalk?id=${userId}&zoneid=${zoneId}`,
+    const response = await axios.post(
+      "https://api.duniagames.co.id/api/transaction/v1/top-up/inquiry/store",
+      new URLSearchParams({
+        productId: "1",
+        itemId: "2",
+        catalogId: "57",
+        paymentId: "352",
+        gameId: userId,
+        zoneId: zoneId,
+        product_ref: "REG",
+        product_ref_denom: "AE"
+      }),
       {
         headers: {
-          "Accept": "application/json",
-          "User-Agent": "Mozilla/5.0"
+          "Content-Type": "application/x-www-form-urlencoded",
+          Referer: "https://www.duniagames.co.id/",
+          Accept: "application/json"
         }
       }
     );
 
-    const data = response.data;
-    
-    if (!data || data.status === "error") {
-      throw new Error(data.message || "Profil tidak ditemukan");
-    }
+    const { data } = response.data;
 
     return {
-      status: true,
-      userId: userId,
-      zoneId: zoneId,
-      nickname: data.username,
-      level: data.level,
-      rank: data.rank,
-      heroCount: data.hero,
-      skinCount: data.skin,
-      winRate: data.winrate
+      status: 200,
+      userId,
+      zoneId,
+      nickname: data?.gameDetail?.userName || "Unknown"
     };
   } catch (error) {
     return {
-      status: false,
-      message: error.message || "Gagal mendapatkan data profil"
+      status: 404,
+      message: "User ID atau Zone ID tidak ditemukan"
     };
   }
-}
+};
 
 module.exports = function(app) {
   app.get('/stalk/ml', async (req, res) => {
-    const { id, zoneid } = req.query;
-    
-    if (!id) {
-      return res.status(400).json({ 
-        status: false, 
-        message: "Parameter 'id' (User ID) tidak ditemukan" 
-      });
-    }
-    
-    if (!zoneid) {
-      return res.status(400).json({ 
-        status: false, 
-        message: "Parameter 'zoneid' (Zone ID) tidak ditemukan" 
+    const { id, zone } = req.query;
+
+    if (!id || !zone) {
+      return res.status(400).json({
+        status: false,
+        message: "Parameter 'id' dan 'zone' wajib diisi"
       });
     }
 
-    const result = await getMobileLegendsProfile(id, zoneid);
-    res.status(result ? 200 : 404).json(result);
+    const result = await getMobileLegendsProfile(id, zone);
+    res.status(result.status).json(result);
   });
 };
