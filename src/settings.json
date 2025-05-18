@@ -59,6 +59,21 @@
           }
         }
       ]
-    }               
+    }, 
+    {
+      "name": "Order Kouta",
+      "items": [
+        {
+          "name": "Create Payment",
+          "desc": "membuat payment order kouta",
+          "path": "/orkur/create?amount=&codeqr=",
+          "status": "ready",
+          "params": {
+            "amount": "Search query", 
+            "codeqr": " rawr"
+          }
+        }
+      ]
+    }
   ]
 }
