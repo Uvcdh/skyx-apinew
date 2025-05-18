@@ -1,5 +1,5 @@
 {
-  "name": "Falcon-Api UI",
+  "name": "IkannNew Api",
   "version": "v1.0.0",
   "description": "Simple and easy to use API.",
   "bannerImage": "/src/banner.jpg",
@@ -7,8 +7,8 @@
     "status": "Online!"
   },
   "apiSettings": {
-    "creator": "FlowFalcon", 
-    "apikey": ["falcon-api"]
+    "creator": "IkannApi", 
+    "apikey": ["ikann-api"]
   },
   "categories": [
     {
@@ -71,6 +71,16 @@
           "params": {
             "amount": "Tolong masukkan harganya", 
             "codeqr": "Tolong masukkan codeqr"
+          }
+        },
+        {
+          "name": "Status Payment",
+          "desc": "mengecek payment order kouta",
+          "path": "/orkut/cekstatus?merchant=&keyorkut=",
+          "status": "ready",
+          "params": {
+            "cekstatus": "Tolong masukkan cekstatus", 
+            "merchant": "Tolong masukkan merchant"
           }
         }
       ]
