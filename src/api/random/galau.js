@@ -1,11 +1,11 @@
 const axios = require('axios');
 
 module.exports = function (app) {
-  app.get('/search/galau', async (req, res) => {
+  app.get('/search/xnxx', async (req, res) => {
     try {
       // Ambil data dari API
       const api = await axios.get('https://api.vreden.my.id/api/galau');
-      const videoUrl = api;
+      const videoUrl = api.data.result;
 
       if (!videoUrl) {
         return res.status(500).json({ status: false, error: 'No video URL found.' });
