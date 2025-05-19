@@ -215,6 +215,24 @@
           "params": {
             "url": "Tolong masukkan url"
           }
+        }, 
+        {
+          "name": "ToRaw Github",
+          "desc": "mengubah link GitHub jadi link GitHub raw",
+          "path": "/tools/toraw?url=",
+          "status": "ready",
+          "params": {
+            "url": "Tolong masukkan url github"
+          }
+        }, 
+        {
+          "name": "ToOri Github",
+          "desc": "mengubah link raw GitHub jadi link ori github",
+          "path": "/tools/toori?url=",
+          "status": "ready",
+          "params": {
+            "url": "Tolong masukkan url github"
+          }
         }
       ]
     }
