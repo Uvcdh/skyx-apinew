@@ -33,6 +33,15 @@
           }
        },
        {
+          "name": "OpenAi",
+          "desc": "Talk with openai",
+          "path": "/ai/openai?text=",
+          "status": "ready",
+          "params": {
+            "text": "Text for openai to respond to"
+          }
+       },
+       {
           "name": "HydroMind",
           "desc": "See the list of supported AI models here: https://mind.hydrooo.web.id",
           "path": "/ai/hydromind?text=&model=",
