@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-async function npm(url) {
+async function mediafire(url) {
     try {
         const response = await axios.get(`https://vapis.my.id/api/mfdl?url=${encodeURIComponent(url)}`)
             return response.data.data.result
