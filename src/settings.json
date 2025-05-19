@@ -61,6 +61,12 @@
           "desc": "Blue Archive Random Images",
           "path": "/random/ba",
           "status": "ready"
+        }, 
+        {
+          "name": "Video Galau",
+          "desc": "memperlihatkan video galau",
+          "path": "/random/galau",
+          "status": "ready"
         }
       ]
     },
