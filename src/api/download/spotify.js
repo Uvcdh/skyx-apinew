@@ -75,7 +75,7 @@ module.exports = function(app) {
         res.status(200).json({
             status: true,
             creator: 'ikann',
-            data: response.download ? response : {}
+            result: response.download ? response : {}
         });
     } catch (error) {
         res.status(500).json({

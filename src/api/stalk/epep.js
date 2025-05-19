@@ -47,6 +47,10 @@ module.exports = function(app) {
     }
 
     const result = await getFreeFireProfile(id);
-    res.status(200).json(result);
+    res.status(200).json({
+      status: true,
+      creator: 'ikann',
+      result
+    });
   });
 };

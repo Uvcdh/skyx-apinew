@@ -38,7 +38,7 @@ module.exports = function(app) {
       // Format response sukses
       return res.json({
         status: true,
-        creator: 'Finix-UI',
+        creator: 'ikann',
         result: {
           uid: response.data.data.uid || uid,
           nickname: response.data.data.nickname || 'Unknown',
