@@ -168,10 +168,19 @@
             "q": "Search query"
           }
         }, 
-         {
+        {
           "name": "Pinterest",
           "desc": "mencari gambar di pinterest",
           "path": "/search/pin?q=",
+          "status": "ready",
+          "params": {
+            "q": "Search query"
+          }
+        },
+        {
+          "name": "Tiktok Search",
+          "desc": "mencari video yang berada di tiktok",
+          "path": "/search/tiktok?q=",
           "status": "ready",
           "params": {
             "q": "Search query"
