@@ -204,7 +204,16 @@
           "path": "/tools/ssweb?url=",
           "status": "ready",
           "params": {
-            "url": "Tolong masukkan harganya"
+            "url": "Tolong masukkan url"
+          }
+        }, 
+         {
+          "name": "Tinyurl",
+          "desc": "mempersingkat link yang panjang",
+          "path": "/tools/tinyurl?url=",
+          "status": "ready",
+          "params": {
+            "url": "Tolong masukkan url"
           }
         }
       ]
