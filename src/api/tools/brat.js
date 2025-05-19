@@ -1,7 +1,7 @@
 const fetch = require('node-fetch')
 
 async function brat(q) {
-let res = await fetch(`https://brat.caliphdev.com/api/brat?text=${Enc(q)}`)
+let res = await fetch(`https://brat.caliphdev.com/api/brat?text=${q}`)
   let buffer = await res.buffer()
 return buffer
 }
