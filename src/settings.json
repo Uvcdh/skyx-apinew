@@ -161,7 +161,7 @@
         }
       ]
     }, 
-    {
+     {
       "name": "Order Kouta",
       "items": [
         {
@@ -182,6 +182,20 @@
           "params": {
             "cekstatus": "Tolong masukkan cekstatus", 
             "merchant": "Tolong masukkan merchant"
+          }
+        }
+      ]
+    }, 
+    {
+      "name": "Tools",
+      "items": [
+        {
+          "name": "Ssweb",
+          "desc": "mengscreenshot suatu website menggunakan url nya saja",
+          "path": "/tools/ssweb?url=",
+          "status": "ready",
+          "params": {
+            "url": "Tolong masukkan harganya"
           }
         }
       ]
