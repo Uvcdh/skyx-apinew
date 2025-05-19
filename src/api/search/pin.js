@@ -95,7 +95,7 @@ async function pin(query) {
 }
 
 module.exports = function (app) {
-  app.get('/api/pin', async (req, res) => {
+  app.get('/search/pin', async (req, res) => {
 
   const { q } = req.query;
 
