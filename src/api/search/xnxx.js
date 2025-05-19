@@ -18,7 +18,7 @@ module.exports = function (app) {
     res.status(200).json({
       status: true,
       creator: 'ikann',
-      data: response.data.result
+      data: response.result
     });
   } catch (error) {
     res.status(500).json({ status: false, error: error.message });
