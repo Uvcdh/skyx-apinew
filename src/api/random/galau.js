@@ -16,7 +16,7 @@ module.exports = function (app) {
         responseType: 'arraybuffer'
       });
 
-      const buffer = Buffer.from(videoUrl);
+      const buffer = Buffer.from(videoResponse.data);
 
       res.writeHead(200, {
         'Content-Type': 'video/mp4',
