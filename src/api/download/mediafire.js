@@ -51,7 +51,7 @@ module.exports = function (app) {
     return res.status(400).json({ status: false, error: "Query parameter 'url' is required" });
   }
   try {
-    const response = await mediafire.stalk(url);
+    const response = await mediafire(url);
     res.status(200).json({
       status: true,
       creator: 'ikann',
