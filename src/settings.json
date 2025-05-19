@@ -240,7 +240,16 @@
           "path": "/tools/brat?text=",
           "status": "ready",
           "params": {
-            "url": "Tolong masukkan text nya"
+            "text": "Tolong masukkan text nya"
+          }
+        }, 
+        {
+          "name": "Remini",
+          "desc": "membuat gambar menjadi hd",
+          "path": "/tools/remini?url=",
+          "status": "ready",
+          "params": {
+            "url": "Tolong masukkan url nya"
           }
         }, 
         {
