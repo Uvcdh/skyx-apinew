@@ -10,7 +10,7 @@ module.exports = function (app) {
   }
   
   const xnxx = (anuuu) => {
-  await axios.get(`https://api.vreden.my.id/api/xnxxsearch?query=${anuuu}`);
+  axios.get(`https://api.vreden.my.id/api/xnxxsearch?query=${anuuu}`);
   }
   
   try {
