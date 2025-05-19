@@ -9,7 +9,9 @@ module.exports = function (app) {
     return res.status(400).json({ status: false, error: "Query parameter 'q' is required" });
   }
   
-  const xnxx = (anuuu) => await axios.get(`https://api.vreden.my.id/api/xnxxsearch?query=${anuuu}`);
+  const xnxx = (anuuu) => {
+  await axios.get(`https://api.vreden.my.id/api/xnxxsearch?query=${anuuu}`);
+  }
   
   try {
     const response = await xnxx(q);
