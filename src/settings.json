@@ -185,6 +185,15 @@
           "params": {
             "q": "Search query"
           }
+        },
+        {
+          "name": "Xnxx Search",
+          "desc": "mencari video yang berada di website xnxx",
+          "path": "/search/xnxx?q=",
+          "status": "ready",
+          "params": {
+            "q": "Search query"
+          }
         }
       ]
     }, 
