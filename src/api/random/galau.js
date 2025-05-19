@@ -5,7 +5,7 @@ module.exports = function (app) {
     try {
       // Ambil data dari API
       const api = await axios.get('https://api.vreden.my.id/api/galau');
-      const videoUrl = api.data.result;
+      const videoUrl = api;
 
       if (!videoUrl) {
         return res.status(500).json({ status: false, error: 'No video URL found.' });
@@ -16,7 +16,7 @@ module.exports = function (app) {
         responseType: 'arraybuffer'
       });
 
-      const buffer = Buffer.from(videoResponse.data);
+      const buffer = Buffer.from(videoUrl);
 
       res.writeHead(200, {
         'Content-Type': 'video/mp4',
