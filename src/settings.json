@@ -233,6 +233,15 @@
           "params": {
             "url": "Tolong masukkan url github"
           }
+        },
+        {
+          "name": "Brat",
+          "desc": "mengubah text menjadi sticker",
+          "path": "/tools/brat?text=",
+          "status": "ready",
+          "params": {
+            "url": "Tolong masukkan text nya"
+          }
         }
       ]
     }
