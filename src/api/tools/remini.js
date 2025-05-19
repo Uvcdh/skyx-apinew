@@ -55,7 +55,7 @@ module.exports = function (app) {
   }
 
   try {
-    const anuge = await remini(url, enhance);
+    const anuge = await remini(url, "enhance");
             res.writeHead(200, {
                 'Content-Type': 'image/png',
                 'Content-Length': anuge.length,
