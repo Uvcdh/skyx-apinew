@@ -1,25 +1,30 @@
 const axios = require('axios');
 
 module.exports = function (app) {
-  app.get('/random/galau', async (req, res) => {
+  app.get('/search/galau', async (req, res) => {
     try {
-      // Ambil URL video dari API
+      // Ambil data dari API
       const api = await axios.get('https://api.vreden.my.id/api/galau');
-      const videoUrl = api.data
+      const videoUrl = api.data.result;
 
       if (!videoUrl) {
-        return res.status(500).json({ status: false, error: 'No video URL found in API response.' });
+        return res.status(500).json({ status: false, error: 'No video URL found.' });
       }
 
-      // Stream video ke response
-      const videoResponse = await axios.get(videoUrl, { responseType: 'stream' });
+      // Download video sebagai buffer
+      const videoResponse = await axios.get(videoUrl, {
+        responseType: 'arraybuffer'
+      });
+
+      const buffer = Buffer.from(videoResponse.data);
 
       res.writeHead(200, {
         'Content-Type': 'video/mp4',
-        'Content-Length': videoResponse.headers['content-length'],
+        'Content-Length': buffer.length,
       });
 
-      videoResponse.data.pipe(res);
+      res.end(buffer);
+
     } catch (error) {
       res.status(500).json({ status: false, error: error.message });
     }
