@@ -48,10 +48,9 @@ module.exports = function (app) {
   const { url } = req.query;
 
   if (!url) {
-    return res.status(400).json({ status: false, error: "Query parameter 'q' is required" });
+    return res.status(400).json({ status: false, error: "Query parameter 'url' is required" });
   }
   try {
-    const { mediafire } = require('./scrape')
     const response = await mediafire.stalk(url);
     res.status(200).json({
       status: true,
