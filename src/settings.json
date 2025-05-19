@@ -2,7 +2,7 @@
   "name": "IkannNew Api",
   "version": "v1.0.0",
   "description": "Simple and easy to use API.",
-  "bannerImage": "/src/banner.jpg",
+  "bannerImage": "/src/ikann.jpg",
   "header": {
     "status": "Online!"
   },
