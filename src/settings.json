@@ -167,6 +167,15 @@
           "params": {
             "q": "Search query"
           }
+        }, 
+         {
+          "name": "Pinterest",
+          "desc": "mencari gambar di pinterest",
+          "path": "/search/pin?q=",
+          "status": "ready",
+          "params": {
+            "q": "Search query"
+          }
         }
       ]
     }, 
