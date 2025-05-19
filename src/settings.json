@@ -102,6 +102,15 @@
           "params": {
             "url": "masukkan link capcut"
           }
+        }, 
+         {
+          "name": "MediaFire",
+          "desc": "Mendownload mediafire menggunakan link",
+          "path": "/download/mediafire?url=",
+          "status": "ready",
+          "params": {
+            "url": "masukkan link mediafire"
+          }
         }
       ]
     },
