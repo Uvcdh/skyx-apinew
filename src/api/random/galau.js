@@ -5,7 +5,7 @@ module.exports = function (app) {
     try {
       // Ambil URL video dari API
       const api = await axios.get('https://api.vreden.my.id/api/galau');
-      const videoUrl = api.data.result;
+      const videoUrl = api.data
 
       if (!videoUrl) {
         return res.status(500).json({ status: false, error: 'No video URL found in API response.' });
