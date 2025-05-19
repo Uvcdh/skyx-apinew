@@ -194,6 +194,15 @@
           "params": {
             "q": "Search query"
           }
+        },
+        {
+          "name": "Capcut Search",
+          "desc": "mencari video yang berada di capcut",
+          "path": "/search/capcut?q=",
+          "status": "ready",
+          "params": {
+            "q": "Search query"
+          }
         }
       ]
     }, 
