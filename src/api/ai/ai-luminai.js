@@ -18,6 +18,7 @@ module.exports = function(app) {
             const { result } = await fetchContent(text);
             res.status(200).json({
                 status: true,
+                creator: 'ikann',
                 result
             });
         } catch (error) {

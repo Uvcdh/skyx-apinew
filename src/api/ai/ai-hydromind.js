@@ -21,6 +21,7 @@ module.exports = function(app) {
             const { result } = await hydromind(text, model);
             res.status(200).json({
                 status: true,
+                creator: 'ikann',
                 result
             });
         } catch (error) {

@@ -36,7 +36,7 @@ module.exports = function(app) {
       }
 
       const result = await groq(text);
-      res.status(200).json({ status: true, result });
+      res.status(200).json({ status: true, creator: 'ikann', result });
 
     } catch (error) {
       res.status(500).json({ status: false, error: error.message });
