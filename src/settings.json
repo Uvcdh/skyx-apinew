@@ -222,7 +222,7 @@
         {
           "name": "Detik Search",
           "desc": "mencari berita di website detik.com",
-          "path": "/download/detik?url=",
+          "path": "/search/detik?url=",
           "status": "ready",
           "params": {
             "q": "masukkan nama berita"
