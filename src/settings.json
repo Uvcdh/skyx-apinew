@@ -220,6 +220,15 @@
           }
         },
         {
+          "name": "Detik Search",
+          "desc": "mencari berita di website detik.com",
+          "path": "/download/detik?url=",
+          "status": "ready",
+          "params": {
+            "q": "masukkan nama berita"
+          }
+        }, 
+        {
           "name": "Capcut Search",
           "desc": "mencari video yang berada di capcut",
           "path": "/search/capcut?q=",
