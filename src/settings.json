@@ -83,6 +83,15 @@
           }
         }, 
         {
+          "name": "Facebook Downloader",
+          "desc": "Untuk mendownload video facebook",
+          "path": "/download/facebook?url=",
+          "status": "ready",
+          "params": {
+            "url": "masukkan link facebook"
+          }
+        }, 
+        {
           "name": "Ytmp4",
           "desc": "Untuk mendownload video youtube berupa video",
           "path": "/download/ytmp4?url=",
