@@ -324,7 +324,7 @@
         {
           "name": "Text2anime",
           "desc": "mengubah text menjadi anime",
-          "path": "/tools/remini?text=&ratio=",
+          "path": "/tools/text2anime?text=&ratio=",
           "status": "ready",
           "params": {
             "text": "Tolong masukkan text nya", 
