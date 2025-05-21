@@ -2,18 +2,18 @@ const axios = require('axios');
 
 module.exports = function (app) {
   app.get('/ai/textoimage', async (req, res) => {
-    const { text } = req.query;
-    if (!text) {
+    const { prompt } = req.query;
+    if (!prompt) {
       return res.status(400).json({
         status: false,
-        error: 'Parameter text wajib diisi.'
+        error: 'Parameter prompt wajib diisi.'
       });
     }
 
     try {
       const response = await axios.get('https://api.vreden.my.id/api/artificial/aiease/text2img', {
         params: {
-          text,
+          prompt,
           style: 19
         }
       });

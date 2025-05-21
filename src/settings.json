@@ -32,41 +32,32 @@
             "text": "Text for vioo to respond to"
           }
        },
-       {
-          "name": "GPT image",
-          "desc": "membuat gambar dengan menggunakan ",
-          "path": "/ai/gpt1image?text=",
-          "status": "ready",
-          "params": {
-            "text": "Text for gpt image to respond to"
-          }
-       },
-       {
+{
   "name": "Text to Image (AI Ease)",
-  "desc": "Mengubah text teks menjadi beberapa gambar AI bergaya seni dengan model AI Ease.",
-  "path": "/ai/textoimage?text=",
+  "desc": "Mengubah prompt teks menjadi beberapa gambar AI bergaya seni dengan model AI Ease.",
+  "path": "/ai/textoimage?prompt=",
   "status": "ready",
   "params": {
-    "text": "Deskripsi teks untuk menghasilkan gambar AI (wajib)"
+    "prompt": "Deskripsi teks untuk menghasilkan gambar AI (wajib)"
   }
 },
           {
       "name": "Generate AI Image",
-      "desc": "Menghasilkan gambar AI dari text",
-      "path": "/ai/ai-img?text=",
+      "desc": "Menghasilkan gambar AI dari prompt",
+      "path": "/ai/ai-img?prompt=",
       "status": "ready",
       "params": {
-        "text": "Deskripsi gambar",
+        "prompt": "Deskripsi gambar",
         "size": "Ukuran (opsional, default: 1_1_HD)"
       }
-          },
+          }, 
           {
   "name": "AI Image 18+",
   "desc": "Menghasilkan gambar AI bergaya realistis. eror reques doank didalam web... tapi silahkan salin endepoint nya dan jalankan manual",
-  "path": "/ai/aireal-img?text=",
+  "path": "/ai/aireal-img?prompt=",
   "status": "ready",
   "params": {
-    "text": "Deskripsi gambar dewasa yang ingin dibuat (wajib)"
+    "prompt": "Deskripsi gambar dewasa yang ingin dibuat (wajib)"
   }
 },
        {
