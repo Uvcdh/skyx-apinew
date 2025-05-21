@@ -33,6 +33,15 @@
           }
        },
        {
+          "name": "GPT image",
+          "desc": "membuat gambar dengan menggunakan ",
+          "path": "/ai/gpt1image?text=",
+          "status": "ready",
+          "params": {
+            "text": "Text for gpt image to respond to"
+          }
+       },
+       {
           "name": "OpenAi",
           "desc": "Talk with openai",
           "path": "/ai/openai?text=",
