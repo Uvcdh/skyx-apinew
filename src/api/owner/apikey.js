@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 function validateApiKey(req, res, next) {
-  const apikey = req.query.apikey || req.headers['x-api-key'];
+  const apikey = (req.query && req.query.apikey) || (req.headers && req.headers['x-api-key']);
 
   if (!apikey) {
     return res.status(401).json({ success: false, message: 'API key required' });
