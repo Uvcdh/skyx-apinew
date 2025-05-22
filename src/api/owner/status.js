@@ -1,5 +1,3 @@
-const express = require('express');
-const router = express.Router();
 const validateApiKey = require('./middleware');
 
  module.exports = function (app) {
