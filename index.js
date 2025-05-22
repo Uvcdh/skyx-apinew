@@ -36,40 +36,21 @@ app.use((req, res, next) => {
 });
 
 // Api Route
-// Api Route
-// Api Route
 let totalRoutes = 0;
-const loadedRoutes = new Set(); // Track loaded routes to prevent duplicates
 const apiFolder = path.join(__dirname, './src/api');
-
-try {
-    fs.readdirSync(apiFolder).forEach((subfolder) => {
-        const subfolderPath = path.join(apiFolder, subfolder);
-        if (fs.statSync(subfolderPath).isDirectory()) {
-            fs.readdirSync(subfolderPath).forEach((file) => {
-                const filePath = path.join(subfolderPath, file);
-                if (path.extname(file) === '.js' && !loadedRoutes.has(filePath)) {
-                    try {
-                        const routeModule = require(filePath);
-                        if (typeof routeModule === 'function') {
-                            routeModule(app);
-                            loadedRoutes.add(filePath);
-                            totalRoutes++;
-                            console.log(chalk.bgHex('#FFFF99').hex('#333').bold(` Loaded Route: ${file} `));
-                        } else {
-                            console.error(chalk.bgRed.white.bold(` Error: ${file} does not export a function `));
-                        }
-                    } catch (error) {
-                        console.error(chalk.bgRed.white.bold(` Failed to load ${file}: ${error.message} `));
-                    }
-                }
-            });
-        }
-    });
-} catch (error) {
-    console.error(chalk.bgRed.white.bold(` Error loading API routes: ${error.message} `));
-    process.exit(1);
-}
+fs.readdirSync(apiFolder).forEach((subfolder) => {
+    const subfolderPath = path.join(apiFolder, subfolder);
+    if (fs.statSync(subfolderPath).isDirectory()) {
+        fs.readdirSync(subfolderPath).forEach((file) => {
+            const filePath = path.join(subfolderPath, file);
+            if (path.extname(file) === '.js') {
+                require(filePath)(app);
+                totalRoutes++;
+                console.log(chalk.bgHex('#FFFF99').hex('#333').bold(` Loaded Route: ${path.basename(file)} `));
+            }
+        });
+    }
+});
 console.log(chalk.bgHex('#90EE90').hex('#333').bold(' Load Complete! ✓ '));
 console.log(chalk.bgHex('#90EE90').hex('#333').bold(` Total Routes Loaded: ${totalRoutes} `));
 
