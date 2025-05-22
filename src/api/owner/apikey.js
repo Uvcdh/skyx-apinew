@@ -7,9 +7,11 @@ function getApiKeyList() {
 }
 
 function validateApiKey(req) {
-  const apikey = req.query.apikey || req.headers['x-api-key'];
+  const apikey = req?.query?.apikey || req?.headers?.['x-api-key'];
+  if (!apikey) return null;
+
   const apikeys = getApiKeyList();
-  return apikeys.find(k => k.key === apikey);
+  return apikeys.find(k => k.key === apikey) || null;
 }
 
 module.exports = { validateApiKey };
