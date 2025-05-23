@@ -90,6 +90,12 @@
           "path": "/random/ba",
           "status": "ready"
         }, 
+         {
+          "name": "Animexin Update",
+          "desc": "Animexin Information Update",
+          "path": "/random/animexin",
+          "status": "ready"
+        }, 
         {
           "name": "Video Galau",
           "desc": "memperlihatkan video galau",
