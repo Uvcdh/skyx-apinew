@@ -9,10 +9,14 @@ module.exports = function(app) {
             const ytResults = await yts.search(q);
             const ytTracks = ytResults.videos.map(video => ({
                 title: video.title,
-                channel: video.author.name,
+                author: video.author.name,
+                authorUrl: video.author.url, 
                 duration: video.duration.timestamp,
-                imageUrl: video.thumbnail,
-                link: video.url
+                thumbnail: video.thumbnail,
+                url: video.url, 
+                description: video.description, 
+                ago: video.ago, 
+                view: video.views
             }));
             res.status(200).json({
                 status: true,
