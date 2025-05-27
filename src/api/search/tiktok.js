@@ -23,7 +23,7 @@ const axios = require('axios')
 }
 
 module.exports = function (app) {
-  app.get('/search/tiktok', async (req, res) => {
+  app.get('/download/tiktok', async (req, res) => {
 
   const { q } = req.query;
 
