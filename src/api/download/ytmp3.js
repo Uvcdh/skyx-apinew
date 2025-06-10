@@ -9,7 +9,7 @@ module.exports = function(app) {
     }
 
     try {
-      const { data } = await axios.get(`https://api.siputzx.my.id/api/d/ytmp3?url=${encodeURIComponent(url)}`);
+      const { data } = await axios.get(`https://api.vreden.my.id/api/ytmp3?url=${encodeURIComponent(url)}`);
       
       if (!data.status) {
         return res.status(500).json({ status: false, error: 'Gagal mengambil data dari API' });
@@ -19,8 +19,8 @@ module.exports = function(app) {
         status: true,
         creator: 'ikann',
         result: {
-          title: data.data.title,
-          download_url: data.data.dl
+          title: data.result.title,
+          download_url: data.result.url
         }
       });
     } catch (error) {
