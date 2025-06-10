@@ -13,15 +13,19 @@ module.exports = function (app) {
 
     try {
       const response = await axios.get('https://api.vreden.my.id/api/ytmp3', {
-        params: { url: url }
+        params: { url }
       });
 
       const data = response.data;
 
-      if (!data || !data.status || !data.result || !data.result.url || !data.result.title) {
+      if (
+        !data?.result?.status ||
+        !data.result.download?.url ||
+        !data.result.metadata
+      ) {
         return res.status(502).json({
           status: false,
-          error: 'Gagal mengambil data video yang valid dari API'
+          error: 'Data dari API tidak valid atau tidak lengkap'
         });
       }
 
@@ -29,8 +33,15 @@ module.exports = function (app) {
         status: true,
         creator: 'ikann',
         result: {
-          title: data.result.title,
-          download_url: data.result.url
+          title: data.result.metadata.title,
+          video_url: data.result.metadata.url,
+          thumbnail: data.result.metadata.thumbnail,
+          duration: data.result.metadata.duration.timestamp,
+          author: data.result.metadata.author?.name || 'Tidak diketahui',
+          download_url: data.result.download.url,
+          quality: data.result.download.quality,
+          available_quality: data.result.download.availableQuality,
+          filename: data.result.download.filename
         }
       });
 
