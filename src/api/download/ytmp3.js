@@ -1,7 +1,5 @@
 const axios = require('axios');
 
-const axios = require('axios');
-
 module.exports = function (app) {
   app.get('/download/ytmp3', async (req, res) => {
     const { url } = req.query;

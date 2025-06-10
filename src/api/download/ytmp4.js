@@ -1,5 +1,4 @@
-  });
-};const axios = require('axios');
+const axios = require('axios');
 
 module.exports = function (app) {
   app.get('/download/ytmp4', async (req, res) => {
