@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran QRIS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100 p-5">
+    <div class="bg-white max-w-md w-full p-6 rounded-lg shadow-lg text-center">
+        <div id="inputSection">
+            <h2 class="text-2xl font-bold mb-4">Masukkan Nominal Pembayaran</h2>
+            <input type="number" id="amount" placeholder="Masukkan nominal (Rp)" 
+                class="w-full p-3 mb-4 border border-gray-300 rounded-lg text-lg text-center" />
+            <button class="w-full bg-green-500 text-white p-3 rounded-lg font-semibold" onclick="createQR()">Buat QRIS</button>
+        </div>
+
+        <div id="result" class="hidden">
+            <h2 class="text-2xl font-bold mb-3">Selesaikan Pembayaran</h2>
+            <div id="countdown" class="text-lg text-red-500 font-bold mb-4">05:00</div>
+
+            <img id="qrImage" class="mx-auto w-48 h-48" src="" alt="QRIS Code" />
+
+            <div class="border border-gray-300 rounded-lg p-4 mt-5 text-left">
+                <h3 class="text-lg font-bold mb-2">Detail Pembayaran</h3>
+                <p><b>Metode:</b> QRIS</p>
+                <p><b>Total Transaksi:</b> <span id="totalAmount"></span></p>
+            </div>
+
+            <button class="w-full bg-green-500 text-white p-3 rounded-lg font-semibold mt-4" id="downloadBtn" onclick="downloadQR()">Unduh QRIS</button>
+            <button class="w-full border border-green-500 text-green-500 p-3 rounded-lg font-semibold mt-2" onclick="checkPayment()">Cek Status Pembayaran</button>
+        </div>
+    </div>
+
+    <!-- Notifikasi UI Modern -->
+    <div id="notification" class="fixed inset-0 flex items-center justify-center bg-black/50 hidden">
+        <div class="bg-white rounded-2xl p-6 max-w-sm w-full shadow-lg text-center" style="max-width: 500px;">
+            <div id="notificationIcon" class="text-5xl mb-4"></div>
+            <h1 id="notificationTitle" class="text-xl font-bold mb-2"></h1>
+            <p id="notificationText" class="text-lg font-semibold text-gray-700 mb-4"></p>
+            <button id="confirmButton" class="mt-4 w-full bg-red-500 text-white py-2 rounded-lg font-semibold">Tutup</button>
+            <button id="retryButton" class="mt-2 w-full bg-blue-500 text-white py-2 rounded-lg font-semibold hidden">Kembali</button>
+        </div>
+    </div>
+
+    <script>
+        let isNotificationVisible = false; // Variabel untuk melacak status notifikasi
+
+        function showNotification(title, message, isSuccess, showRetryButton, callback) {
+            const notification = document.getElementById("notification");
+            const notificationTitle = document.getElementById("notificationTitle");
+            const notificationText = document.getElementById("notificationText");
+            const confirmButton = document.getElementById("confirmButton");
+            const retryButton = document.getElementById("retryButton");
+            const notificationIcon = document.getElementById("notificationIcon");
+
+            notificationTitle.innerText = title;
+            notificationText.innerText = message;
+            notificationIcon.innerHTML = isSuccess ? '<i class="fas fa-check-circle text-green-500"></i>' : '<i class="fas fa-times-circle text-red-500"></i>';
+            
+            // Hanya tampilkan notifikasi jika belum ada yang ditampilkan
+            if (!isNotificationVisible) {
+                isNotificationVisible = true; // Tandai notifikasi sebagai ditampilkan
+                notification.classList.remove("hidden");
+
+                confirmButton.onclick = () => {
+                    notification.classList.add("hidden");
+                    isNotificationVisible = false; // Reset status notifikasi
+                    if (callback) callback();
+                };
+
+                // Tampilkan atau sembunyikan tombol "Kembali"
+                if (showRetryButton) {
+                    retryButton.classList.remove("hidden");
+                    retryButton.onclick = () => {
+                        window.location.href = '/'; // Arahkan ke halaman utama
+                    };
+                } else {
+                    retryButton.classList.add("hidden");
+                }
+            }
+        }
+
+        window.onload = function() {
+            const savedQR = localStorage.getItem("qrImage");
+            const savedAmount = localStorage.getItem("totalAmount");
+            const savedTime = localStorage.getItem("expireTime");
+
+            if (savedQR && savedAmount && savedTime) {
+                const currentTime = new Date().getTime();
+                if (currentTime < savedTime) {
+                    document.getElementById("qrImage").src = savedQR;
+                    document.getElementById("totalAmount").innerText = `Rp ${savedAmount}`;
+                    document.getElementById("inputSection").classList.add("hidden");
+                    document.getElementById("result").classList.remove("hidden");
+                    
+                    const remainingTime = Math.floor((savedTime - currentTime) / 1000);
+                    startCountdown(remainingTime);
+                } else {
+                    localStorage.clear();
+                    showNotification("Waktu Pembayaran Sudah Habis", "Transaksi kamu gagal diproses karena waktu pembayaran telah habis. Kamu bisa buat kembali.", false, true);
+                }
+            }
+        };
+
+        async function createQR() {
+            const amount = document.getElementById('amount').value;
+
+            if (!amount || amount <= 0) {
+                showNotification("Input Tidak Valid", "Masukkan nominal yang valid!", false);
+                return;
+            }
+
+            const codeqr = "00020101021126670016COM.NOBUBANK.WWW01189360050300000879140214205497978253950303UMI51440014ID.CO.QRIS.WWW0215ID20254096572230303UMI5204541153033605802ID5921IKANN STORE OK24434196005DEPOK61051640062070703A0163043122";
+
+            try {
+                const response = await fetch(`/orkut/create?amount=${amount}&codeqr=${encodeURIComponent(codeqr)}`);
+                const data = await response.json();
+
+                if (data.status && data.result && data.result.qrImageUrl) {
+                    document.getElementById("inputSection").classList.add("hidden");
+                    document.getElementById("qrImage").src = data.result.qrImageUrl;
+                    document.getElementById("totalAmount").innerText = `Rp ${amount}`;
+                    document.getElementById("result").classList.remove("hidden");
+
+                    const expireTime = new Date().getTime() + 5 * 60 * 1000;
+                    localStorage.setItem("qrImage", data.result.qrImageUrl);
+                    localStorage.setItem("totalAmount", amount);
+                    localStorage.setItem("expireTime", expireTime);
+
+                    startCountdown(300);
+                } else {
+                    showNotification("Gagal Membuat QRIS", "Gagal membuat QRIS, coba lagi.", false);
+                }
+            } catch (error) {
+                showNotification("Kesalahan Jaringan", "Terjadi kesalahan, coba lagi nanti.", false);
+            }
+        }
+
+        function startCountdown(duration) {
+            let timer = duration;
+            const countdownElement = document.getElementById("countdown");
+
+            const interval = setInterval(() => {
+                const minutes = Math.floor(timer / 60);
+                const seconds = timer % 60;
+
+                countdownElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    localStorage.clear();
+                    showNotification("Waktu Pembayaran Sudah Habis", "Transaksi kamu gagal diproses karena waktu pembayaran telah habis. Kamu bisa buat kembali.", false, true, () => location.reload());
+                }
+            }, 1000);
+        }
+
+        function downloadQR() {
+            const qrImage = document.getElementById("qrImage").src;
+            const link = document.createElement("a");
+            link.href = qrImage;
+            link.download = "QRIS_Pembayaran.png";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        async function checkPayment() {
+            const merchant = "OK2443419"; 
+            const keyorkut = "900194417493122152443419OKCT4B58A6DF07916CBCA841E39B305F104B"; 
+            const amount = localStorage.getItem("totalAmount");
+            const apiUrl = `/orkut/cekstatus?merchant=${merchant}&keyorkut=${keyorkut}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const result = await response.json();
+                console.log('Data transaksi:', result);
+
+                if (result && result.amount && parseInt(result.amount) === parseInt(amount)) {
+                    showNotification("Pembayaran Berhasil", "🎉 Pembayaran berhasil! Terima kasih telah melakukan transaksi. Anda dapat melanjutkan ke langkah berikutnya.", true, true, () => location.reload());
+                } else {
+                    showNotification("Menunggu Konfirmasi", "Masih menunggu konfirmasi pembayaran. Pastikan Anda telah menyelesaikan pembayaran dan tunggu beberapa saat.", false);
+                }
+            } catch (error) {
+                showNotification("Kesalahan Jaringan", "Terjadi kesalahan saat memeriksa status pembayaran. Pastikan koneksi internet Anda stabil dan coba lagi nanti.", false);
+            }
+        }
+    </script>
+</body>
+</html>
