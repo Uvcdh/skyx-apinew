@@ -1,4 +1,4 @@
-const { checkEmail } = require('ikann')
+const { checkEmail } = require('ikann');
 
 module.exports = function (app) {
   app.get('/tools/checkemail', async (req, res) => {
@@ -12,8 +12,11 @@ module.exports = function (app) {
     }
     
     try {
-      const email = await checkEmail(mail)
-      return email
+      const email = await checkEmail(mail);
+      return res.json({
+        status: true,
+        result: email
+      });
     } catch (err) {
       return res.status(500).json({
         status: false,

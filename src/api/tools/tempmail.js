@@ -1,10 +1,14 @@
-const { createEmail } = require('ikann')
+  });
+};const { createEmail } = require('ikann');
 
 module.exports = function (app) {
   app.get('/tools/tmpmail', async (req, res) => {
     try {
-      const email = await createEmail()
-      return email
+      const email = await createEmail();
+      return res.json({
+        status: true,
+        result: email
+      });
     } catch (err) {
       return res.status(500).json({
         status: false,
