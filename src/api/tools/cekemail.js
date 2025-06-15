@@ -12,10 +12,10 @@ module.exports = function (app) {
     }
     
     try {
-      const email = await checkEmail(email);
+      const anuzz = await checkEmail(email);
       return res.json({
         status: true,
-        result: email
+        result: anuzz
       });
     } catch (err) {
       return res.status(500).json({
