@@ -1,0 +1,15 @@
+const { createEmail } = require('ikann')
+
+module.exports = function (app) {
+  app.get('/tools/tmpmail', async (req, res) => {
+    try {
+      const email = await createEmail()
+      return email
+    } catch (err) {
+      return res.status(500).json({
+        status: false,
+        error: err?.response?.data?.error || err.message || 'Terjadi kesalahan saat memproses permintaan'
+      });
+    }
+  });
+};

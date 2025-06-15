@@ -1,6 +1,0 @@
-{
-  "apikeys": [
-    { "key": "abc123", "owner": "user1" },
-    { "key": "def456", "owner": "user2" }
-  ]
-}

@@ -338,6 +338,21 @@
           }
         },
         {
+          "name": "Create Email",
+          "desc": "membuat email acak menggunakan temp mail",
+          "path": "/tools/createemail",
+          "status": "ready"
+        },
+        {
+          "name": "Check Email",
+          "desc": "mengecek inbox yang ada di email menggunakan temp mail",
+          "path": "/tools/checkemail?email=",
+          "status": "ready",
+          "params": {
+            "email": "Tolong masukkan email yang tadi kamu buat"
+          }
+        },
+        {
           "name": "Brat",
           "desc": "mengubah text menjadi sticker",
           "path": "/tools/brat?text=",
