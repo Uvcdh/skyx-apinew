@@ -1,5 +1,4 @@
-  });
-};const { createEmail } = require('ikann');
+const { createEmail } = require('@ikanngeming/blubub');
 
 module.exports = function (app) {
   app.get('/tools/tmpmail', async (req, res) => {

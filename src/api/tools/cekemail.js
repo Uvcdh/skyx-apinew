@@ -1,4 +1,4 @@
-const { checkEmail } = require('ikann');
+const { checkEmail } = require('@ikanngeming/blubub');
 
 module.exports = function (app) {
   app.get('/tools/checkemail', async (req, res) => {
