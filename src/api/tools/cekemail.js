@@ -2,9 +2,9 @@ const { checkEmail } = require('@ikanngeming/blubub');
 
 module.exports = function (app) {
   app.get('/tools/checkemail', async (req, res) => {
-    const { mail } = req.query;
+    const { email } = req.query;
     
-    if (!mail) {
+    if (!email) {
       return res.status(400).json({
         status: false,
         error: 'Masukkan emailnyoo'
@@ -12,7 +12,7 @@ module.exports = function (app) {
     }
     
     try {
-      const email = await checkEmail(mail);
+      const email = await checkEmail(email);
       return res.json({
         status: true,
         result: email
