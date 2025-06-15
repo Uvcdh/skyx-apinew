@@ -1,7 +1,7 @@
 const { createEmail } = require('@ikanngeming/blubub');
 
 module.exports = function (app) {
-  app.get('/tools/tmpmail', async (req, res) => {
+  app.get('/tools/createemail', async (req, res) => {
     try {
       const email = await createEmail();
       return res.json({
