@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Modern API Documentation and Testing Interface">
+    <link rel="icon" href="/src/icon.png" type="image/png">
+    <title id="page">API Documentation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen">
+        <div class="spinner-wrapper">
+            <svg class="spinner-logo" width="80" height="80" viewBox="0 0 100 100">
+                <circle class="spinner-path" cx="50" cy="50" r="40" fill="none" stroke-width="8" />
+                <circle class="spinner-animation" cx="50" cy="50" r="40" fill="none" stroke-width="8" />
+            </svg>
+            <p>Loading<span class="loading-dots">...</span></p>
+        </div>
+    </div>
+
+    <!-- Overlay for mobile menu -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Side Navigation -->
+    <aside class="side-nav">
+        <div class="side-nav-logo">
+            <span id="sideNavName">API</span>
+            <div id="versionHeader" class="badge-pill">v1.0</div>
+        </div>
+        
+        <nav class="side-nav-links">
+            <a href="#home" class="side-nav-link active">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#apis" class="side-nav-link">
+                <i class="fas fa-plug"></i>
+                <span>APIs</span>
+            </a>
+            <a href="#docs" class="side-nav-link">
+                <i class="fas fa-book"></i>
+                <span>Documentation</span>
+            </a>
+            <a href="https://whatsapp.com/channel/0029Vb6BnbsB4hdNFnu4gv3d" target="_blank" class="side-nav-link">
+                <i class="fab fa-whatsapp"></i>
+                <span>Update Api</span>
+            </a>
+        </nav>
+        
+        <div class="nav-collapse-btn" aria-label="Toggle navigation">
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-wrapper">
+        <header class="main-header">
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="search-container">
+                <div class="input-group">
+                    <span class="input-group-text" aria-hidden="true"><i class="fas fa-search"></i></span>
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search API..." aria-label="Search API">
+                    <button class="clear-search" id="clearSearch" aria-label="Clear search">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="header-actions">
+                <div class="notification-bell" aria-label="Notifications">
+                    <i class="far fa-bell"></i>
+                    <span class="notification-badge">2</span>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <div class="hero-heading">
+                    <h1 id="name" class="gradient-text">API Documentation</h1>
+                    <div id="version" class="badge-pill">v1.0</div>
+                </div>
+                
+                <p id="description" class="hero-description">Explore our comprehensive API documentation to integrate powerful features into your applications. Get started with our easy-to-use endpoints and detailed guides.</p>
+                
+                <div id="apiLinks" class="hero-actions">
+                    <button class="btn btn-primary">
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn btn-outline">
+                        <span>View Documentation</span>
+                        <i class="fas fa-book"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="banner-container">
+                    <img id="dynamicImage" class="banner" src="https://via.placeholder.com/600x400/6366f1/f8fafc?text=API+Documentation" alt="API Banner">
+                </div>
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+        </section>
+        
+        <div class="hero-section mt-4">
+            <div class="mb-3">
+                <h5 class="mb-0">Visitor</h5>
+                <p class="text-muted mb-0"><div id="visitorCount">
+                    Loading Visitor...
+                </div></p>
+            </div>
+        </div>
+
+        <!-- API Section -->
+        <section id="apis" class="api-section">
+            <h2 class="section-title">Available APIs</h2>
+            <p class="section-description">Explore our collection of powerful and easy-to-use APIs</p>
+            
+            <div class="tab-content" id="apiContent">
+                <!-- Sample API Cards -->
+                <div class="api-card">
+                    <div class="api-card-header">
+                        <h3 class="api-card-title">User Authentication</h3>
+                        <span class="api-card-method method-post">POST</span>
+                    </div>
+                    <div class="api-card-body">
+                        <p class="api-card-description">Authenticate users with email and password to receive access tokens for authorized requests.</p>
+                    </div>
+                    <div class="api-card-footer">
+                        <button class="btn btn-primary btn-sm try-it-out" data-title="User Authentication" data-method="POST" data-endpoint="https://api.example.com/v1/auth" data-description="Authenticate users with email and password to receive access tokens for authorized requests.">
+                            Try it out
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="api-card">
+                    <div class="api-card-header">
+                        <h3 class="api-card-title">Get User Profile</h3>
+                        <span class="api-card-method method-get">GET</span>
+                    </div>
+                    <div class="api-card-body">
+                        <p class="api-card-description">Retrieve user profile information including name, email, and preferences.</p>
+                    </div>
+                    <div class="api-card-footer">
+                        <button class="btn btn-primary btn-sm try-it-out" data-title="Get User Profile" data-method="GET" data-endpoint="https://api.example.com/v1/users/{id}" data-description="Retrieve user profile information including name, email, and preferences.">
+                            Try it out
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="api-card">
+                    <div class="api-card-header">
+                        <h3 class="api-card-title">Update Profile</h3>
+                        <span class="api-card-method method-put">PUT</span>
+                    </div>
+                    <div class="api-card-body">
+                        <p class="api-card-description">Update user profile information including name, avatar, and other preferences.</p>
+                    </div>
+                    <div class="api-card-footer">
+                        <button class="btn btn-primary btn-sm try-it-out" data-title="Update Profile" data-method="PUT" data-endpoint="https://api.example.com/v1/users/{id}" data-description="Update user profile information including name, avatar, and other preferences.">
+                            Try it out
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="footer-content">
+                <div id="wm" class="copyright">© 2023 API Documentation. All rights reserved.</div>
+                
+                <div class="footer-middle">
+                    <div class="theme-switcher">
+                        <span>Light</span>
+                        <label class="switch">
+                            <input type="checkbox" id="themeToggle">
+                            <span class="slider round"></span>
+                        </label>
+                        <span>Dark</span>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="https://whatsapp.com/channel/0029VasjrIh3gvWXKzWncf2P" class="footer-link">
+                        <i class="fab fa-whatsapp"></i> Info
+                    </a>
+                    <a href="https://wa.me/message/UB3MPOSN5S7AG1" class="footer-link">
+                        <i class="fas fa-envelope"></i> Contact
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- API Response Modal -->
+    <div class="modal fade" id="apiResponseModal" tabindex="-1" aria-labelledby="apiResponseModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" id="modalDialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title" id="apiResponseModalLabel">API Endpoint</h5>
+                        <p class="modal-desc mb-0" id="apiResponseModalDesc">Test this endpoint with your parameters</p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="endpoint-container">
+                        <div class="endpoint-label">
+                            <span>Endpoint</span>
+                            <button class="copy-btn" id="copyEndpoint" title="Copy to clipboard" aria-label="Copy endpoint">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                        <pre id="apiEndpoint" class="code-block">https://api.example.com/v1/users</pre>
+                    </div>
+                    
+                    <div id="apiQueryInputContainer" class="query-input-container">
+                        <label class="form-label">User ID</label>
+                        <input type="text" class="form-control" placeholder="Enter user ID">
+                    </div>
+                    
+                    <div id="apiResponseLoading" class="d-none">
+                        <svg class="spinner-logo" width="50" height="50" viewBox="0 0 100 100">
+                            <circle class="spinner-path" cx="50" cy="50" r="40" fill="none" stroke-width="8" />
+                            <circle class="spinner-animation" cx="50" cy="50" r="40" fill="none" stroke-width="8" />
+                        </svg>
+                        <p>Processing request...</p>
+                    </div>
+                    
+                    <div class="response-container d-none" id="responseContainer">
+                        <div class="response-label">
+                            <span>Response</span>
+                            <button class="copy-btn" id="copyResponse" title="Copy to clipboard" aria-label="Copy response">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                        <pre id="apiResponseContent" class="code-block d-none">{
+    "id": "12345",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "createdAt": "2023-01-15T10:30:00Z"
+}</pre>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="submitQueryBtn" class="btn btn-primary">
+                        <span>Submit</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast-container">
+        <div id="notificationToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="toast-icon fas fa-info-circle me-2"></i>
+                <strong class="me-auto toast-title">Notification</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                API documentation updated to version 1.2
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Loading screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loadingScreen').style.opacity = '0';
+                setTimeout(function() {
+                    document.getElementById('loadingScreen').style.display = 'none';
+                }, 300);
+            }, 1000);
+        });
+
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('change', function() {
+            document.body.classList.toggle('dark-mode', this.checked);
+            localStorage.setItem('darkMode', this.checked);
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            themeToggle.checked = true;
+        }
+
+        // Side navigation toggle
+        const navCollapseBtn = document.querySelector('.nav-collapse-btn');
+        const sideNav = document.querySelector('.side-nav');
+        const mainWrapper = document.querySelector('.main-wrapper');
+
+        navCollapseBtn.addEventListener('click', function() {
+            sideNav.classList.toggle('collapsed');
+            mainWrapper.classList.toggle('collapsed');
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navOverlay = document.getElementById('navOverlay');
+        
+        function toggleMobileMenu() {
+            sideNav.classList.toggle('show');
+            navOverlay.classList.toggle('show');
+            document.body.classList.toggle('no-scroll', sideNav.classList.contains('show'));
+        }
+
+        menuToggle.addEventListener('click', toggleMobileMenu);
+        
+        // Close mobile menu when clicking on overlay
+        navOverlay.addEventListener('click', toggleMobileMenu);
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.side-nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth < 768) {
+                    toggleMobileMenu();
+                }
+                
+                // Update active state
+                document.querySelectorAll('.side-nav-link').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Scroll to section
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Clear search input
+        const clearSearch = document.getElementById('clearSearch');
+        const searchInput = document.getElementById('searchInput');
+
+        clearSearch.addEventListener('click', function() {
+            searchInput.value = '';
+            searchInput.focus();
+            this.style.display = 'none';
+            filterAPIs('');
+        });
+
+        // Show/hide clear button based on input
+        searchInput.addEventListener('input', function() {
+            clearSearch.style.display = this.value ? 'block' : 'none';
+            filterAPIs(this.value);
+        });
+
+        // Filter API cards based on search input
+        function filterAPIs(searchTerm) {
+            const apiCards = document.querySelectorAll('.api-card');
+            const searchLower = searchTerm.toLowerCase();
+            
+            apiCards.forEach(card => {
+                const title = card.querySelector('.api-card-title').textContent.toLowerCase();
+                const description = card.querySelector('.api-card-description').textContent.toLowerCase();
+                const method = card.querySelector('.api-card-method').textContent.toLowerCase();
+                
+                if (title.includes(searchLower) || 
+                    description.includes(searchLower) || 
+                    method.includes(searchLower)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Try it out button click handler
+        document.querySelectorAll('.try-it-out').forEach(button => {
+            button.addEventListener('click', function() {
+                const modal = new bootstrap.Modal(document.getElementById('apiResponseModal'));
+                
+                // Set modal content based on button data attributes
+                document.getElementById('apiResponseModalLabel').textContent = this.dataset.title;
+                document.getElementById('apiResponseModalDesc').textContent = this.dataset.description;
+                document.getElementById('apiEndpoint').textContent = this.dataset.endpoint;
+                
+                // Show the modal
+                modal.show();
+            });
+        });
+
+        // Copy buttons
+        document.getElementById('copyEndpoint').addEventListener('click', function() {
+            const text = document.getElementById('apiEndpoint').textContent;
+            navigator.clipboard.writeText(text.trim());
+            showToast('Endpoint copied to clipboard!');
+        });
+
+        document.getElementById('copyResponse').addEventListener('click', function() {
+            const text = document.getElementById('apiResponseContent').textContent;
+            navigator.clipboard.writeText(text.trim());
+            showToast('Response copied to clipboard!');
+        });
+
+        // Submit button handler
+        document.getElementById('submitQueryBtn').addEventListener('click', function() {
+            const loading = document.getElementById('apiResponseLoading');
+            const responseContainer = document.getElementById('responseContainer');
+            const responseContent = document.getElementById('apiResponseContent');
+            
+            loading.classList.remove('d-none');
+            
+            // Simulate API call
+            setTimeout(function() {
+                loading.classList.add('d-none');
+                responseContainer.classList.remove('d-none');
+                responseContent.classList.remove('d-none');
+            }, 1500);
+        });
+
+        // Show toast notification
+        function showToast(message) {
+            const toastEl = document.getElementById('notificationToast');
+            const toastBody = toastEl.querySelector('.toast-body');
+            const toast = new bootstrap.Toast(toastEl);
+            
+            toastBody.textContent = message;
+            toast.show();
+        }
+
+        // Show notification toast on page load
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                showToast('Welcome to our API documentation!');
+            }, 1500);
+        });
+
+        // Visitor count
+        fetch("https://visitor.api.akuari.my.id/umum/view/tambah-ip?id=https://berak.vercel.app/")
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('visitorCount').innerText = data.visitor.total || '1,000+';
+            })
+            .catch(err => {
+                console.error("Failed to fetch visitor data:", err);
+                document.getElementById('visitorCount').innerText = '1,000+';
+            });
+    </script>
+</body>
+</html>
