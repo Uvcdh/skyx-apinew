@@ -1,5 +1,5 @@
 const axios = require('axios');
-module.exports = function () {
+module.exports = function (app) {
     async function anua(isixx) {
         try {
             const { response } = await axios.get(`https://api.taka.my.id/tanya-ustad?quest=${isixx}`)
