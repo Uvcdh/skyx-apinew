@@ -1,9 +1,8 @@
 const axios = require('axios');
-module.exports = function (app) {
-    const { text } = req.query;
-    async function bluearchive() {
+module.exports = function () {
+    async function anua(isixx) {
         try {
-            const { response } = await axios.get(`https://api.taka.my.id/tanya-ustad?quest=${text}`)
+            const { response } = await axios.get(`https://api.taka.my.id/tanya-ustad?quest=${isixx}`)
             const anuxx = response.data
             return Buffer.from(anuxx);
         } catch (error) {
@@ -13,7 +12,8 @@ module.exports = function (app) {
     
 app.get('/tools/ustadz', async (req, res) => {
     try {
-            const pedo = await bluearchive();
+        const { text } = req.query;
+            const pedo = await anua(text);
             res.writeHead(200, {
                 'Content-Type': 'image/png',
                 'Content-Length': pedo.length,
