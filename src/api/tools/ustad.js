@@ -3,7 +3,7 @@ module.exports = function (app) {
     async function anua(isixx) {
         try {
             const { response } = await axios.get(`https://api.taka.my.id/tanya-ustad?quest=${isixx}`)
-            const anuxx = response.data
+            const anuxx = response
             return Buffer.from(anuxx);
         } catch (error) {
             throw error;
