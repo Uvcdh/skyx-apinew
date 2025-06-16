@@ -353,6 +353,15 @@
           }
         },
         {
+          "name": "Ustadz",
+          "desc": "pak ustadz pertanyaan",
+          "path": "/tools/ustadz?text=",
+          "status": "ready",
+          "params": {
+            "text": "masukkan text pertanyaan ustadz"
+          }
+        },
+        {
           "name": "Brat",
           "desc": "mengubah text menjadi sticker",
           "path": "/tools/brat?text=",
