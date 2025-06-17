@@ -371,24 +371,15 @@
           }
         }, 
         {
-  "name": "Vcc Generator",
-  "desc": "generator virtual credit card",
-  "path": "/tools/vccgen?vccgen=&count=",
-  "status": "ready",
-  "params": {
-    "vccgen": {
-      "type": "select",
-      "label": "Masukkan type nya",
-      "options": ["visa", "mastercard", "americanexpress", "jcb"]
-    },
-    "count": {
-      "type": "number",
-      "label": "Masukkan jumlah vcc nya, dan jangan sampai melebihi 10 generate vcc",
-      "min": 1,
-      "max": 10
-    }
-  }
-},
+          "name": "Vcc Generator",
+          "desc": "generator virtual credit card",
+          "path": "/tools/vccgen?vccgen=&count=",
+          "status": "ready",
+          "params": {
+            "vccgen": "Masukkan type nya, visa, americanexpress, mastercard, jcb",
+            "count": "Masukkan 'count' antara 1 sampai 10"
+          }
+        }, 
         {
           "name": "Text2anime",
           "desc": "mengubah text menjadi anime",

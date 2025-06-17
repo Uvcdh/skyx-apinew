@@ -4,9 +4,7 @@ module.exports = function (app) {
   app.get('/tools/vccgen', async (req, res) => {
     const { type, count } = req.query;
 
-    const allowedTypes = ['visa', 'mastercard', 'americanexpress', 'jcb'];
-    
-    if (!type || !allowedTypes.includes(type.toLowerCase())) {
+    if (!type) {
       return res.status(400).json({
         status: false,
         error: "Masukkan 'type' yang valid: visa, americanexpress, mastercard, jcb"
