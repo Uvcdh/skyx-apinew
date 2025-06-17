@@ -373,10 +373,10 @@
         {
           "name": "Vcc Generator",
           "desc": "generator virtual credit card",
-          "path": "/tools/vccgen?vccgen=&count=",
+          "path": "/tools/vccgen?type=&count=",
           "status": "ready",
           "params": {
-            "vccgen": "Masukkan type nya, visa, americanexpress, mastercard, jcb",
+            "type": "Masukkan type nya, visa, americanexpress, mastercard, jcb",
             "count": "Masukkan 'count' antara 1 sampai 10"
           }
         }, 

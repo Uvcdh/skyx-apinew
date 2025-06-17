@@ -1,9 +1,8 @@
 const axios = require('axios');
-
 const typecard = ["visa", "americanexpress", "mastercard", "jcb"];
 
 module.exports = function (app) {
-  app.get('/tools/genvcc', async (req, res) => {
+  app.get('/tools/vccgen', async (req, res) => {
     let { type, count = "5" } = req.query;
 
     if (!typecard.includes(type)) {
