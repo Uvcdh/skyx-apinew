@@ -31,7 +31,7 @@ module.exports = function (app) {
         status: true,
         creator: 'ikann',
         count: count,
-        data: response.data
+        result: response.data
       });
 
     } catch (err) {
