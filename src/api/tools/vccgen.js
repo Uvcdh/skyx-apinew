@@ -1,41 +1,38 @@
-let typecard = ["visa", "americanexpress", "mastercard", "jcb"];
+  })
+}const { vccgen } = require('@ikanngeming/blubub');
 
 module.exports = function (app) {
   app.get('/tools/vccgen', async (req, res) => {
-    let { type, count = "10" } = req.query;
+    const { type, count } = req.query;
 
-    if (!typecard.includes(type)) {
+    const allowedTypes = ['visa', 'mastercard', 'americanexpress', 'jcb'];
+    
+    if (!type || !allowedTypes.includes(type.toLowerCase())) {
       return res.status(400).json({
         status: false,
-        error: "Type is invalid!",
+        error: "Masukkan 'type' yang valid: visa, americanexpress, mastercard, jcb"
       });
     }
 
-    let typeds;
-    switch (type) {
-      case 'visa': typeds = "Visa"; break;
-      case 'mastercard': typeds = "Mastercard"; break;
-      case 'americanexpress': typeds = "American%20Express"; break;
-      case 'jcb': typeds = "JCB"; break;
-      default: return res.status(400).json({ status: false, error: "Invalid card type" });
+    const countInt = parseInt(count);
+    if (!count || isNaN(countInt) || countInt < 1 || countInt > 10) {
+      return res.status(400).json({
+        status: false,
+        error: "Masukkan 'count' antara 1 sampai 10"
+      });
     }
 
     try {
-      const response = await axios.get('https://backend.lambdatest.com/api/dev-tools/credit-card-generator', {
-        params: { type: typeds, 'no-of-cards': count }
-      });
-
-      res.json({
+      const respon = vccgen(type.toLowerCase(), countInt);
+      res.status(200).json({
         status: true,
         creator: 'ikann',
-        count: count,
-        result: response.data
+        result: respon
       });
-
     } catch (err) {
       res.status(500).json({
         status: false,
-        error: "Error fetching data",
+        error: err.message || String(err)
       });
     }
   });
