@@ -807,8 +807,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                 clearTimeout(timeoutId);
 
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status} - ${response.statusText || 'Unknown error'}`);
-                }
+  throw {
+    status: false,
+    code: response.status,
+    message: `API error! status: ${response.status} - ${response.statusText || 'Unknown error'}`
+  };
+}
 
                 const contentType = response.headers.get('Content-Type');
                 if (contentType && contentType.startsWith('image/')) {
