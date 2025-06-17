@@ -1,5 +1,4 @@
-  })
-}const { vccgen } = require('@ikanngeming/blubub');
+const { vccgen } = require('@ikanngeming/blubub');
 
 module.exports = function (app) {
   app.get('/tools/vccgen', async (req, res) => {
