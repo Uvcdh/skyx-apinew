@@ -20,7 +20,7 @@ module.exports = function (app) {
     }
 
     try {
-      const respon = vccgen(type, count)
+      const respon = await vccgen(type, count)
       res.status(200).json({
         status: true,
         creator: 'ikann',
