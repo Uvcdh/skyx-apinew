@@ -1,14 +1,13 @@
 let typecard = ["visa", "americanexpress", "mastercard", "jcb"];
 
 module.exports = function (app) {
-  app.get('/tools/genvcc', async (req, res) => {
+  app.get('/tools/vccgen', async (req, res) => {
     let { type, count = "10" } = req.query;
 
     if (!typecard.includes(type)) {
       return res.status(400).json({
         status: false,
-        message: "Type is invalid!",
-        available_types: typecard
+        error: "Type is invalid!",
       });
     }
 
@@ -18,7 +17,7 @@ module.exports = function (app) {
       case 'mastercard': typeds = "Mastercard"; break;
       case 'americanexpress': typeds = "American%20Express"; break;
       case 'jcb': typeds = "JCB"; break;
-      default: return res.status(400).json({ status: false, message: "Invalid card type" });
+      default: return res.status(400).json({ status: false, error: "Invalid card type" });
     }
 
     try {
@@ -30,14 +29,13 @@ module.exports = function (app) {
         status: true,
         creator: 'ikann',
         count: count,
-        data: response.data
+        result: response.data
       });
 
     } catch (err) {
       res.status(500).json({
         status: false,
-        message: "Error fetching data",
-        error: err.message
+        error: "Error fetching data",
       });
     }
   });
