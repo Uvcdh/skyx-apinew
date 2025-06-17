@@ -23,7 +23,7 @@ module.exports = function (app) {
       res.status(200).json({
         status: true,
         creator: 'ikann',
-        result: respon
+        result: respon.data
       });
     } catch (err) {
       res.status(500).json({
