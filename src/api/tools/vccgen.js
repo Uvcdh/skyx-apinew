@@ -1,25 +1,18 @@
-const { vccgen } = require('@ikanngeming/blubub')
 let typecard = ["visa", "americanexpress", "mastercard", "jcb"];
 
 module.exports = function (app) {
-  app.get('/tools/vccgen', async (req, res) => {
-    const { type, count } = req.query;
-    
+  app.get('/tools/genvcc', async (req, res) => {
+    let { type, count = "10" } = req.query;
+
     if (!typecard.includes(type)) {
       return res.status(400).json({
-          status: false,
-          error: "Masukkan type nya, visa, americanexpress, mastercard, jcb"
-        })
-      }
-    
-      if (!count && count > 10) {
-        return res.status(400).json({
-          status: false,
-          error: "Masukkan jumlah vcc nya, dan jangan sampai melebihi 10 generate vcc"
-        })
-      }
-      
-      let typeds;
+        status: false,
+        message: "Type is invalid!",
+        available_types: typecard
+      });
+    }
+
+    let typeds;
     switch (type) {
       case 'visa': typeds = "Visa"; break;
       case 'mastercard': typeds = "Mastercard"; break;
@@ -27,15 +20,25 @@ module.exports = function (app) {
       case 'jcb': typeds = "JCB"; break;
       default: return res.status(400).json({ status: false, message: "Invalid card type" });
     }
-      try {
-        let respon = vccgen(type, count)
-        res.status(200).json({
-          status: true,
-          creator: 'ikann',
-          result: respon
-        })
-      } catch (error) {
-    res.status(500).json({ status: false, error: error.message });
-  }
-  })
+
+    try {
+      const response = await axios.get('https://backend.lambdatest.com/api/dev-tools/credit-card-generator', {
+        params: { type: typeds, 'no-of-cards': count }
+      });
+
+      res.json({
+        status: true,
+        creator: 'ikann',
+        count: count,
+        data: response.data
+      });
+
+    } catch (err) {
+      res.status(500).json({
+        status: false,
+        message: "Error fetching data",
+        error: err.message
+      });
+    }
+  });
 }
