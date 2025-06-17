@@ -1,5 +1,5 @@
 const { vccgen } = require('@ikanngeming/blubub')
-const typecard = ["visa", "americanexpress", "mastercard", "jcb"];
+let typecard = ["visa", "americanexpress", "mastercard", "jcb"];
 
 module.exports = function (app) {
   app.get('/tools/vccgen', async (req, res) => {
