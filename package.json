@@ -11,7 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^1.6.8",
-    "@ikanngeming/blubub": "^2.0.11",
+    "@ikanngeming/blubub": "^2.1.2",
     "body-parser": "^1.20.3",
     "cheerio": "^1.0.0",
     "groq-sdk": "^0.9.1",
