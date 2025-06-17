@@ -11,11 +11,10 @@ module.exports = function (app) {
       });
     }
 
-    const countInt = parseInt(count);
-    if (!count || isNaN(countInt) || countInt < 1 || countInt > 10) {
+    if (!count) {
       return res.status(400).json({
         status: false,
-        error: "Masukkan 'count' antara 1 sampai 10"
+        error: "Masukkan jumlah vcc nya"
       });
     }
 
