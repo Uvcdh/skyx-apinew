@@ -389,6 +389,15 @@
             "text": "Tolong masukkan text nya", 
             "ratio": " Tolong kasih ukuran gambarnya"
           }
+        },
+        {
+          "name": "Tts",
+          "desc": "mengubah text menjadi audio",
+          "path": "/tools/tts?text=",
+          "status": "ready",
+          "params": {
+            "text": "Tolong masukkan text nya"
+          }
         }, 
         {
           "name": "Info Gempa",
