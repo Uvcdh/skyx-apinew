@@ -1,7 +1,7 @@
 const { sfl } = require('@ikanngeming/blubub');
 
 module.exports = function(app) {
-    app.get('/tools/slf', async (req, res) => {
+    app.get('/tools/sfl', async (req, res) => {
         try {
           const { link } = req.query;
             const sl = await sfl(link);
