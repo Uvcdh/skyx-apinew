@@ -398,16 +398,7 @@
           "params": {
             "text": "Tolong masukkan text nya"
           }
-        }, 
-        {
-          "name": "Safelinku",
-          "desc": "mengubah link menjadi link safelinku",
-          "path": "/tools/sfl?link=",
-          "status": "ready",
-          "params": {
-            "link": "Tolong masukkan code nya"
-          }
-        }, 
+        },
         {
           "name": "Info Gempa",
           "desc": "mengetahui gempa di mana",
