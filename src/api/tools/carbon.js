@@ -1,4 +1,19 @@
-const { carbon } = require('@ikanngeming/blubub');
+async function carbon(input) {
+  let Blobs = await fetch("https://carbonara.solopov.dev/api/cook", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        "code": input
+      })
+    })
+    .then(response => response.blob())
+  let arrayBuffer = await Blobs.arrayBuffer();
+  let buffer = Buffer.from(arrayBuffer);
+  return buffer
+}
+
 module.exports = function(app) {
     app.get('/tools/carbon', async (req, res) => {
         try {
