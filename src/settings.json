@@ -400,12 +400,12 @@
           }
         }, 
         {
-          "name": "Carbon",
-          "desc": "mengubah code menjadi code snap",
-          "path": "/tools/carbon?text=",
+          "name": "Safelinku",
+          "desc": "mengubah link menjadi link safelinku",
+          "path": "/tools/sfl?link=",
           "status": "ready",
           "params": {
-            "text": "Tolong masukkan code nya"
+            "link": "Tolong masukkan code nya"
           }
         }, 
         {
