@@ -194,12 +194,6 @@
           }
         },
         {
-          "name": "Grow A Garden",
-          "desc": "Grow A Garden Stalk untuk melihat stock di grow a garden",
-          "path": "/stalk/grow",
-          "status": "ready"
-        },
-        {
           "name": "Npm stalk",
           "desc": "Npm package stalk",
           "path": "/stalk/npm?name=",
