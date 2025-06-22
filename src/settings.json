@@ -409,13 +409,13 @@
           }
         },
         {
-          "name": "NGL Image Generator",
-          "desc": "Membuat gambar dengan teks dalam style 'Request Feature'",
-          "path": "/tools/ngl?title=&text=",
+          "name": "Ngl",
+          "desc": "membuat gambar ngl",
+          "path": "/tools/ngl?ngl=&text=",
           "status": "ready",
           "params": {
-            "title": "Judul atas box (contoh: Request Feature)",
-            "text": "Isi utama (akan dibungkus otomatis jika panjang)"
+            "title": "Tolong masukkan title",
+            "text": "Tolong masukkan text nya"
           }
         },
         {
