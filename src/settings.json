@@ -417,7 +417,7 @@
     "title": "Judul atas box (contoh: Request Feature)",
     "text": "Isi utama (akan dibungkus otomatis jika panjang)"
   }
-}
+},
         {
           "name": "Info Gempa",
           "desc": "mengetahui gempa di mana",
