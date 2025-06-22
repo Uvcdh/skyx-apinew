@@ -409,16 +409,6 @@
           }
         },
         {
-          "name": "Ngl",
-          "desc": "membuat gambar ngl",
-          "path": "/tools/ngl?ngl=&text=",
-          "status": "ready",
-          "params": {
-            "title": "Tolong masukkan title",
-            "text": "Tolong masukkan text nya"
-          }
-        },
-        {
           "name": "Info Gempa",
           "desc": "mengetahui gempa di mana",
           "path": "/tools/gempa",
