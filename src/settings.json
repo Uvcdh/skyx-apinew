@@ -161,6 +161,15 @@
             "url": "masukkan link capcut"
           }
         }, 
+        {
+          "name": "Pastebin",
+          "desc": "Mengambil code yang ada di pastebin",
+          "path": "/download/pastebin?url=",
+          "status": "ready",
+          "params": {
+            "url": "masukkan link pastebin"
+          }
+        },
          {
           "name": "MediaFire",
           "desc": "Mendownload mediafire menggunakan link",
