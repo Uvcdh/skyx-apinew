@@ -194,7 +194,7 @@ async function nglgen(title, subtitle) {
 
 module.exports = function (app) {
   app.get('/tools/ngl', async (req, res) => {
-    const { text } = req.query;
+    const { title, text } = req.query;
     
     if (!text) {
       return res.status(400).json({
