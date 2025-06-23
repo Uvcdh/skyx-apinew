@@ -13,6 +13,11 @@
     }
   ],
   "env": {
-    "NODE_ENV": "18"
+    "NODE_ENV": "production"
+  },
+  "build": {
+    "env": {
+      "NODE_VERSION": "18"
+    }
   }
 }
