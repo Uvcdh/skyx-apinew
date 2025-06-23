@@ -400,7 +400,7 @@
           }
         },
         {
-          "name": "Tts",
+          "name": "Ttss",
           "desc": "mengubah text menjadi audio",
           "path": "/tools/tts?text=",
           "status": "ready",
